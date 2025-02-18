@@ -1,0 +1,55 @@
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/navbar.css' %}">
+{% endblock %}
+
+<div class="site-wrap">
+    <div class="social-media">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="social-icons ">
+                    <a href="#"><i class="fab fa-twitter text-secondary fs-5"></i></a>
+                    <a href="#"><i class="fab fa-facebook text-secondary fs-5"></i></a>
+                    <a href="#"><i class="fab fa-instagram text-secondary fs-5"></i></a>
+                    <a href="#"><i class="fab fa-youtube text-secondary fs-5"></i></a>
+                    <a href="#"><i class="fab fa-vimeo text-secondary fs-5"></i></a>
+                    <a href="#"><i class="fab fa-medium text-secondary fs-5"></i></a>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="site-search gray">
+                        <input type="text" placeholder="Type keyword to search..." class="text-white gray">
+                        <i class="fas fa-search text-white   ms-3"></i>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="">Login</a>
+                        <a href="">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="site-navbar container">
+        <div class="">
+            <a href="" class="site-logo">Balita</a>
+            <div class="site-menu">
+                <a href="">HOME</a>
+                <a href="">TRAVEL</a>
+                <div class="dropdown d-inline-block">
+                    <a class="dropdown-toggle" href="#" role="button">
+                        CATEGORIES
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Lifestyle</a>
+                        <a class="dropdown-item" href="#">Food</a>
+                        <a class="dropdown-item" href="#">Adventure</a>
+                        <a class="dropdown-item" href="#">Travel</a>
+                        <a class="dropdown-item" href="#">Business</a>
+                    </div>
+                </div>
+                <a href="">ABOUT</a>
+                <a href="">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+</div>

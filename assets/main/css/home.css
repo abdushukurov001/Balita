@@ -1,0 +1,146 @@
+.carousel-item {
+    position: relative;
+}
+
+.carousel-inner{
+    height: 400px;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 10%; 
+    left: 15px; 
+    right: 15px;
+    padding: 15px;
+    color: white;
+    max-width: 600px;
+}
+
+.carousel-content{
+    margin-top: 30px;
+    margin-bottom: 130px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.home{
+    margin-top: 60px;
+    
+}
+
+
+
+
+.post {
+    margin-bottom: 30px;
+}
+.post img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.post h2 {
+    margin-top: 15px;
+    font-size: 24px;
+}
+.post p {
+    color: #555;
+}
+.pagination {
+    justify-content: center;
+    margin-top: 30px;
+}
+.search-box {
+    margin-bottom: 20px;
+}
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+
+.image-container {
+   position: relative; 
+}
+
+.image-container img {
+    position: absolute;
+    top: -70px;
+    transform: translateX(-50%); 
+
+    
+}
+
+.sites-search{
+    margin-bottom: 100px;
+}
+
+
+.sidebar-section {
+    margin-bottom: 40px;
+}
+
+.sidebar-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-list li {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-list a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.category-list a:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.category-count {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.tag-cloud {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    color: #6c757d;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.tag:hover {
+    background-color: #e9ecef;
+    color: #495057;
+    text-decoration: none;
+}

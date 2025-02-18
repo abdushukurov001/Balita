@@ -1,0 +1,28 @@
+<div class="container  py-4">
+    <h2 class="mb-4">More Blog Posts</h2>
+    
+   <div class="col-md-8">
+    {% for post in main_obj|slice:":3" %}
+    <div class="card mb-4">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{post.image.url}}" alt="Golden Gate Bridge" class="img-fluid rounded-start h-100 object-fit-cover">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <div class="d-flex gap-2 mb-2">
+                        <span class="category-badge bg-primary p-1 text-white">{{post.category}}</span>
+                        <small class="text-muted">March 15, 2018</small>
+                        <small class="text-muted">• 3</small>
+                    </div>
+                    <h5 class="card-title">{{ post.title }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    
+    
+   </div>
+</div>

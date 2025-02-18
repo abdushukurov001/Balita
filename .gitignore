@@ -1,0 +1,129 @@
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media/
+
+# Backup fayllari #
+*.bak
+
+# Agar PyCharm ishlatayotgan bo'lsangiz #
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# AWS foydalanuvchi maxsus fayllari
+.idea/**/aws.xml
+
+# Yaratilgan fayllar
+.idea/**/contentModel.xml
+
+# Maxfiy yoki tez-tez o'zgaradigan fayllar
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+
+# Faylga asoslangan loyiha formati
+*.iws
+
+# IntelliJ
+out/
+
+# JIRA plaginlari
+atlassian-ide-plugin.xml
+
+# Python #
+*.py[cod]
+*$py.class
+
+# Tarqatish / paketlash
+.Python build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.whl
+*.egg-info/
+.installed.cfg
+*.egg
+*.manifest
+*.spec
+
+# O'rnatish loglari
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / qamrov hisobotlari
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery
+celerybeat-schedule.*
+
+# SageMath tahlil qilingan fayllar
+*.sage.py
+
+# Muhitlar
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# mkdocs hujjatlari
+/site
+
+# mypy
+.mypy_cache/
+
+# Sublime Text #
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# sftp konfiguratsiya fayli
+sftp-config.json
+
+# Paket nazorati maxsus fayllari
+PackageControl.last-run
+PackageControl.ca-list
+PackageControl.ca-bundle
+PackageControl.system-ca-bundle
+GitHub.sublime-settings

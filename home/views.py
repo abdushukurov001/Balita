@@ -1,0 +1,24 @@
+from django.shortcuts import render, get_object_or_404
+from .models import Post, Category
+from django.core.paginator import Paginator
+
+def home_view(request):
+    categories = Category.objects.all()
+    main_obj = Post.objects.all()
+    page_number = request.GET.get('page', 1)
+    
+    paginator = Paginator(categories, 1) 
+    current_category = paginator.get_page(page_number)
+    
+    if current_category.object_list:
+        posts = Post.objects.filter(category=current_category.object_list[0])
+    else:
+        posts = Post.objects.none()
+
+    context = {
+        'current_category': current_category,
+        'posts': posts,
+        'main_obj': main_obj
+    }
+    
+    return render(request, 'home.html', context)
