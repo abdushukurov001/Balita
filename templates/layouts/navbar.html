@@ -33,8 +33,7 @@
         <div class="">
             <a href="" class="site-logo">Balita</a>
             <div class="site-menu">
-                <a href="">HOME</a>
-                <a href="">TRAVEL</a>
+                <a href="{% url 'home' %}">HOME</a>
                 <div class="dropdown d-inline-block">
                     <a class="dropdown-toggle" href="#" role="button">
                         CATEGORIES
@@ -47,8 +46,8 @@
                         <a class="dropdown-item" href="#">Business</a>
                     </div>
                 </div>
-                <a href="">ABOUT</a>
-                <a href="">CONTACT</a>
+                <a href="{% url 'about'%}">ABOUT</a>
+                <a href="{% url 'contact'%}">CONTACT</a>
             </div>
         </div>
     </nav>

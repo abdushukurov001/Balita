@@ -18,10 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from home.views import about_view, contact_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("home.urls"))
+    path("", include("home.urls")),
+    path("about/", about_view, name='about'),
+    path("contact/", contact_view, name='contact'),
+
 ]
 
 

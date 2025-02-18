@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Post, Category
+from django.shortcuts import redirect, render
+from .models import Post, Category, About
 from django.core.paginator import Paginator
 
 def home_view(request):
@@ -22,3 +22,37 @@ def home_view(request):
     }
     
     return render(request, 'home.html', context)
+
+
+
+
+def about_view(request):
+    main_obj = Post.objects.all()
+    about = About.objects.first()
+
+
+
+    return render(request, 'about.html', context={
+        'main_obj': main_obj,
+        "about": about
+
+    })
+
+
+def contact_view(request):
+    main_obj = Post.objects.all()
+
+
+    return render(request, 'contact.html', context={
+        'main_obj': main_obj
+    })
+
+
+def postDetail_view(request, id):
+    try:
+        posts = Post.objects.get(id=id)
+        return render(request,'post-detail.html', context={
+        'posts':posts
+    } )
+    except Post.DoesNotExist:
+        return redirect('home')

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Tag, Post, Comment
+from .models import Category, Tag, Post, Comment, About
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'created_at') 
@@ -19,7 +19,11 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('post', 'text', 'created_at') 
     search_fields = ('text',)  
 
+class AboutAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment, CommentAdmin)
+admin.site.register(About, AboutAdmin)

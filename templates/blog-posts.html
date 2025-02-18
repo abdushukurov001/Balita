@@ -3,7 +3,7 @@
     
    <div class="col-md-8">
     {% for post in main_obj|slice:":3" %}
-    <div class="card mb-4">
+    <a href="{% url 'post-detail' post.id %}" class="card mb-4" style="text-decoration: none;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="{{post.image.url}}" alt="Golden Gate Bridge" class="img-fluid rounded-start h-100 object-fit-cover">
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </a>
     {% endfor %}
 
     
