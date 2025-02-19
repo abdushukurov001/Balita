@@ -52,7 +52,7 @@ def contact_view(request):
 
 def postDetail_view(request, post_id):
     try:
-        post = get_object_or_404(Post, id=post_id)  # Post mavjudligini tekshiramiz
+        post = get_object_or_404(Post, id=post_id)  
         comments = Comment.objects.filter(post=post)
     except Post.DoesNotExist:
         return redirect('home')
