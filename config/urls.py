@@ -25,6 +25,7 @@ urlpatterns = [
     path("", include("home.urls")),
     path("about/", about_view, name='about'),
     path("contact/", contact_view, name='contact'),
+    path("", include("users.urls"))
 
 ]
 

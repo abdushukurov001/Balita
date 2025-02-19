@@ -60,10 +60,10 @@
                     <div class="sidebar-section">
                         <h3 class="sidebar-title">Categories</h3>
                         <ul class="category-list">
-                            {% for category in main_obj %}
+                            {% for category in count_obj %}
                             <li>
-                                <a href="#">{{category.category}}</a>
-                                <span class="category-count">(14)</span>
+                                <a href="{% if category.id %}{% url 'category' category.id %}{% else %}#{% endif %}">{{ category.name }}</a>
+                                <span class="category-count">({{category.post_count}})</span>
                             </li>
                             {% endfor %}
                         </ul>
@@ -72,11 +72,16 @@
                     <div class="sidebar-section">
                         <h3 class="sidebar-title">Tags</h3>
                         <div class="tag-cloud">
-                            {% for post in main_obj %}
-                                {% for tag in post.tags.all %}
+                            {% for tag in unique_tags %}
+                            {% with tag.post_set.first.category as category %}
+                                {% if category %}
+                                    <a href="{% url 'category' category.id %}" class="tag">{{ tag.name }}</a>
+                                {% else %}
                                     <a href="#" class="tag">{{ tag.name }}</a>
-                                {% endfor %}
-                            {% endfor %}
+                                {% endif %}
+                            {% endwith %}
+                        {% endfor %}
+                        
                         </div>
                         
                     </div>

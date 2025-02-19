@@ -1,11 +1,12 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 class UserModel(AbstractUser):
-    birth_date = models.DateField(blank=True, null=True)
-    profile = models.ImageField(upload_to='profile/', default='users/user.jpg', blank=True, null=True)
-
-    class Meta:
-        db_table = 'user'
-        
-
+    groups = models.ManyToManyField(
+        'auth.Group',
+        blank=True
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        blank=True
+    )

@@ -1,6 +1,7 @@
-from django.shortcuts import redirect, render
-from .models import Post, Category, About
+from django.shortcuts import redirect, render, get_object_or_404
+from .models import Post, Category, About, Comment
 from django.core.paginator import Paginator
+
 
 def home_view(request):
     categories = Category.objects.all()
@@ -18,7 +19,8 @@ def home_view(request):
     context = {
         'current_category': current_category,
         'posts': posts,
-        'main_obj': main_obj
+        'main_obj': main_obj,
+        
     }
     
     return render(request, 'home.html', context)
@@ -48,11 +50,42 @@ def contact_view(request):
     })
 
 
-def postDetail_view(request, id):
+def postDetail_view(request, post_id):
     try:
-        posts = Post.objects.get(id=id)
-        return render(request,'post-detail.html', context={
-        'posts':posts
-    } )
+        post = get_object_or_404(Post, id=post_id)  # Post mavjudligini tekshiramiz
+        comments = Comment.objects.filter(post=post)
     except Post.DoesNotExist:
         return redirect('home')
+    except Comment.DoesNotExist:  
+        comments = None
+    return render(request,'post-detail.html', context={
+        'posts':post,
+        'comments': comments
+    } )
+    
+
+def category_view(request, id):
+    try:
+        categories = Category.objects.all()
+        category = Category.objects.get(id=id)
+        posts = Post.objects.filter(category=category)
+        main_obj = Post.objects.all()
+        page_number = request.GET.get('page', 1)
+        
+        paginator = Paginator(categories, 1) 
+        current_category = paginator.get_page(page_number)
+    
+  
+
+        return render(request, 'categories.html', context={
+            'posts':posts,
+            'category': category,
+            'main_obj': main_obj,
+            'current_category': current_category,
+
+    })
+    except Category.DoesNotExist:
+        return redirect('home')
+    
+
+
