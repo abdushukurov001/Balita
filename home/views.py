@@ -7,6 +7,8 @@ def home_view(request):
     categories = Category.objects.all()
     main_obj = Post.objects.all()
     page_number = request.GET.get('page', 1)
+    query = request.GET.get('q')
+
     
     paginator = Paginator(categories, 1) 
     current_category = paginator.get_page(page_number)
@@ -15,11 +17,19 @@ def home_view(request):
         posts = Post.objects.filter(category=current_category.object_list[0])
     else:
         posts = Post.objects.none()
+    
+    if query:
+        posts = Post.objects.filter(title__icontains=query)  # Yoki boshqa maydonlarda qidirish
+    
+    post_paginator = Paginator(posts, 3)  # Har bir sahifada 5 ta post
+    current_posts = post_paginator.get_page(page_number)
+
 
     context = {
         'current_category': current_category,
-        'posts': posts,
+        'posts': current_posts,
         'main_obj': main_obj,
+        'query': query,
         
     }
     
@@ -58,9 +68,12 @@ def postDetail_view(request, post_id):
         return redirect('home')
     except Comment.DoesNotExist:  
         comments = None
+
+
+
     return render(request,'post-detail.html', context={
-        'posts':post,
-        'comments': comments
+        'post':post,
+        'comments': comments,
     } )
     
 
