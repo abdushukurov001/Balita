@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import Post, Category, About, Comment
 from django.core.paginator import Paginator
-
+from .forms import CommentForm
 
 def home_view(request):
     categories = Category.objects.all()
@@ -19,9 +19,9 @@ def home_view(request):
         posts = Post.objects.none()
     
     if query:
-        posts = Post.objects.filter(title__icontains=query)  # Yoki boshqa maydonlarda qidirish
+        posts = Post.objects.filter(title__icontains=query)  
     
-    post_paginator = Paginator(posts, 3)  # Har bir sahifada 5 ta post
+    post_paginator = Paginator(posts, 3) 
     current_posts = post_paginator.get_page(page_number)
 
 
@@ -60,21 +60,6 @@ def contact_view(request):
     })
 
 
-def postDetail_view(request, post_id):
-    try:
-        post = get_object_or_404(Post, id=post_id)  
-        comments = Comment.objects.filter(post=post)
-    except Post.DoesNotExist:
-        return redirect('home')
-    except Comment.DoesNotExist:  
-        comments = None
-
-
-
-    return render(request,'post-detail.html', context={
-        'post':post,
-        'comments': comments,
-    } )
     
 
 def category_view(request, id):
@@ -101,4 +86,26 @@ def category_view(request, id):
         return redirect('home')
     
 
+def postDetail_view(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    comments = post.comments.all()
 
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            if request.user.is_authenticated:
+                comment.author = request.user
+            comment.save()
+            return redirect('post-detail', post_id=post.id)
+        else:
+            form = CommentForm()
+    else:
+        form = CommentForm()
+        
+        return render(request, 'post-detail.html', context={
+            'post': post,
+            'comments': comments,
+            'form': form
+        })

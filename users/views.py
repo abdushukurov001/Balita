@@ -10,10 +10,14 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('login')
+            return redirect('login') 
+        else:
+            messages.error(request, "Iltimos, xatolarni to'g'irlang")
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
+
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -24,13 +28,13 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.success(request, f'Welcome {username}!')
                 return redirect('home')
             else:
-                messages.error(request, 'Invalid username or password!')
+                messages.error(request, " foydalanuvchi nomi yoki parol notog'ri!")
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
+
 
 def logout_view(request):
     logout(request)

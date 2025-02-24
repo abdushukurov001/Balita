@@ -8,10 +8,14 @@ def category_processor(request):
     unique_tags = Tag.objects.all()
     posts = Post.objects.all().order_by('-id')
     count_obj = Category.objects.annotate(post_count=Count('posts'))
-    print(posts.count())
+    popular_posts = Post.objects.annotate(
+        comment_count=Count('comments')
+    ).order_by('-comment_count')[:3]
+
     return {
             'categories': categories, 
             'count_obj': count_obj, 
             'unique_tags': unique_tags ,
-            'posts': posts
+            'posts': posts,
+            'popular_posts': popular_posts
             }                

@@ -24,35 +24,24 @@
 
     <div class="">
         <div class="">
-            <h5 class="card-title ">Popular Posts</h5>
-            <div class="site-navbar mb-4 bt-5"></div>
-                <li class=" d-flex gap-3 justify-content-between">
-                    <div class="">
-                        <img class=" "  height="70" src="https://www.afisha.uz/uploads/media/2024/08/562b7809be552220958e2abed297fed2_m.jpg" alt="">
-                    </div>
-                    <div>
-                    <p>There’s a Cool New Way for Men to Wear Socks and Sandals</p>
-                    <p class="text-secondary">March 15, 2018 • 🍡 3</p>
-                    </div>
-                </li>
-                <li class=" d-flex gap-3 justify-content-between">
-                    <div class="">
-                        <img class=" "  height="70" src="https://www.afisha.uz/uploads/media/2024/08/562b7809be552220958e2abed297fed2_m.jpg" alt="">
-                    </div>
-                    <div>
-                    <p>There’s a Cool New Way for Men to Wear Socks and Sandals</p>
-                    <p class="text-secondary">March 15, 2018 • 🍡 3</p>
-                    </div>
-                </li>
-                <li class=" d-flex gap-3 justify-content-between">
-                    <div class="">
-                        <img class=" "  height="70" src="https://www.afisha.uz/uploads/media/2024/08/562b7809be552220958e2abed297fed2_m.jpg" alt="">
-                    </div>
-                    <div>
-                    <p>There’s a Cool New Way for Men to Wear Socks and Sandals</p>
-                    <p class="text-secondary">March 15, 2018 • 🍡 3</p>
-                    </div>
-                </li>
+            <div class="">
+                <h5 class="card-title">Popular Posts</h5>
+                <div class="site-navbar mb-4 bt-5"></div>
+                {% for post in popular_posts %}
+                    <a href="{% url 'post-detail' post.id %}" class="d-flex gap-3 justify-content-between mb-3">
+                        <div class="">
+                            <img width="100" height="70" src="{{ post.image.url }}" alt="{{ post.title }}">
+                        </div>
+                        <div>
+                            <p>{{ post.title }}</p>
+                            <p class="text-secondary">
+                                {{ post.created_at|date:"F d, Y" }} • 
+                                <span>💬 {{ post.comment_count }}</span>
+                            </p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
         </div>
     
             <div class="row">
